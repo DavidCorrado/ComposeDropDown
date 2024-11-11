@@ -53,7 +53,7 @@ fun Greeting(
         var selectedOptionText by remember { mutableStateOf("") }
 
         val options = listOf("Option 1", "Option 2", "Option 3")
-
+        val enabled = false
         ExposedDropdownMenuBox(
             expanded = expanded,
             onExpandedChange = { expanded = !expanded },
@@ -63,10 +63,13 @@ fun Greeting(
                 onValueChange = { selectedOptionText = it },
                 readOnly = true, // Makes the text field readonly
                 label = { Text("Select an option") },
+                enabled = enabled,
                 modifier =
                     Modifier
-                        .menuAnchor(MenuAnchorType.PrimaryNotEditable, false) // Required to anchor the dropdown menu to the text field
-                        .clickable { expanded = !expanded },
+                        .menuAnchor(MenuAnchorType.PrimaryNotEditable, enabled) // Required to anchor the dropdown menu to the text field
+                        .let {
+                            if (enabled) it.clickable { expanded = !expanded } else it
+                        },
                 trailingIcon = {
                     ExposedDropdownMenuDefaults.TrailingIcon(
                         expanded = expanded,
