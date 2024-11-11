@@ -65,7 +65,7 @@ fun Greeting(
                 label = { Text("Select an option") },
                 modifier =
                     Modifier
-                        .menuAnchor(MenuAnchorType.PrimaryNotEditable, true) // Required to anchor the dropdown menu to the text field
+                        .menuAnchor(MenuAnchorType.PrimaryNotEditable, false) // Required to anchor the dropdown menu to the text field
                         .clickable { expanded = !expanded },
                 trailingIcon = {
                     ExposedDropdownMenuDefaults.TrailingIcon(
