@@ -12,6 +12,7 @@ import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ExposedDropdownMenuBox
 import androidx.compose.material3.ExposedDropdownMenuDefaults
+import androidx.compose.material3.MenuAnchorType
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -64,7 +65,7 @@ fun Greeting(
                 label = { Text("Select an option") },
                 modifier =
                     Modifier
-                        .menuAnchor() // Required to anchor the dropdown menu to the text field
+                        .menuAnchor(MenuAnchorType.PrimaryNotEditable, true) // Required to anchor the dropdown menu to the text field
                         .clickable { expanded = !expanded },
                 trailingIcon = {
                     ExposedDropdownMenuDefaults.TrailingIcon(
